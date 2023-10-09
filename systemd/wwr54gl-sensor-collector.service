@@ -1,0 +1,14 @@
+[Unit]
+Description=WRT54GL-hosted sensor prometheus exporter
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/wrt54gl-sensor-collector -connect 192.168.86.250:2001
+Restart=on-failure
+RestartSec=2s
+Type=simple
+DynamicUser=true
+
+[Install]
+WantedBy=multi-user.target
+Alias=wrt54gl-sensor-collector.service
