@@ -22,8 +22,8 @@ var connect = flag.String("connect", "192.168.3.41:9456", "Host/port to connect 
 var connectTimeout = flag.Duration("connect-timeout", 30*time.Second, "Connection deadline")
 
 var (
-	ds18x20SampleRE   = regexp.MustCompile(`^(?i)\d+ (temp) ([0-9a-f]+) (\w+) ([\d.]+)$`)
-	dht22SampleRE     = regexp.MustCompile(`^(?i)\d+ (humidity) (DHT22) ([\d.]+) ([\d.]+)$`)
+	ds18x20SampleRE   = regexp.MustCompile(`^(?i)-?\d+ (temp) ([0-9a-f]+) (\w+) ([\d.]+)$`)
+	dht22SampleRE     = regexp.MustCompile(`^(?i)-?\d+ (humidity) (DHT22) ([\d.]+) ([\d.]+)$`)
 	temperatureGauges = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Namespace: "sensors",
 		Name:      "temperature_degrees_celsius",
